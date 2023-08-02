@@ -2,7 +2,7 @@ package com.example.fooddeliveryapp.data.entity
 
 import java.io.Serializable
 
-class SepetYemekler(
+data class SepetYemekler(
     var sepet_yemek_id: Int,
     var yemek_adi: String,
     var yemek_resim_adi: String,
