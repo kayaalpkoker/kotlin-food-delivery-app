@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_nav"
+    app:startDestination="@id/anasayfaFragment">
+
+    <fragment
+        android:id="@+id/anasayfaFragment"
+        android:name="com.example.fooddeliveryapp.ui.fragment.AnasayfaFragment"
+        android:label="fragment_anasayfa"
+        tools:layout="@layout/fragment_anasayfa" >
+        <action
+            android:id="@+id/switchHomepageToProductDetail"
+            app:destination="@id/urunDetayFragment" />
+        <action
+            android:id="@+id/switchHomepageToCart"
+            app:destination="@id/sepetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/urunDetayFragment"
+        android:name="com.example.fooddeliveryapp.ui.fragment.UrunDetayFragment"
+        android:label="fragment_urun_detay"
+        tools:layout="@layout/fragment_urun_detay" />
+    <fragment
+        android:id="@+id/sepetFragment"
+        android:name="com.example.fooddeliveryapp.ui.fragment.SepetFragment"
+        android:label="fragment_sepet"
+        tools:layout="@layout/fragment_sepet" />
+</navigation>

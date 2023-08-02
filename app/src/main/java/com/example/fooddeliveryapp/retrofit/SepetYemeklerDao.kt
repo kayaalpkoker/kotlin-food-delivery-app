@@ -18,10 +18,10 @@ interface SepetYemeklerDao {
     @POST("/yemekler/sepeteYemekEkle.php")
     @FormUrlEncoded
     suspend fun sepeteYemekEkle(@Field("yemek_adi") yemek_adi:String,
-                           @Field("yemek_resim_adi") yemek_resim_adi:String,
-                           @Field("yemek_fiyat") yemek_fiyat:Int,
-                           @Field("yemek_siparis_adet") yemek_siparis_adet:Int,
-                           @Field("kullanici_adi") kullanici_adi:String) : CRUDCevap
+                                @Field("yemek_resim_adi") yemek_resim_adi:String,
+                                @Field("yemek_fiyat") yemek_fiyat:Int,
+                                @Field("yemek_siparis_adet") yemek_siparis_adet:Int,
+                                @Field("kullanici_adi") kullanici_adi:String) : CRUDCevap
 
     @POST("/yemekler/sepettenYemekSil.php")
     @FormUrlEncoded
