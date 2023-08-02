@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.testkotlinfood666'
+    namespace 'com.example.fooddeliveryapp'
     compileSdk 33
 
     // ViewBinding & DataBinding
@@ -14,7 +14,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.testkotlinfood666"
+        applicationId "com.example.fooddeliveryapp"
         minSdk 24
         targetSdk 33
         versionCode 1

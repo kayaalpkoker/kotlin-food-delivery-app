@@ -14,14 +14,18 @@ class SepetYemeklerDataSource(var sydao: SepetYemeklerDao) {
             return@withContext sydao.sepettekiYemekleriGetir(kullanici_adi_kaya).sepet_yemekler
         }
 
-    suspend fun sepeteYemekEkle(yemek_adi:String, yemek_resim_adi:String, yemek_fiyat:Int, yemek_siparis_adet:Int){
-        sydao.sepeteYemekEkle(yemek_adi,yemek_resim_adi, yemek_fiyat, yemek_siparis_adet, kullanici_adi_kaya)
+    suspend fun sepeteYemekEkle(
+        yemek_adi: String,
+        yemek_resim_adi: String,
+        yemek_fiyat: Int,
+        yemek_siparis_adet: Int
+    ) {
+        sydao.sepeteYemekEkle(yemek_adi, yemek_resim_adi, yemek_fiyat, yemek_siparis_adet, kullanici_adi_kaya)
     }
 
-    suspend fun sepettenYemekSil(sepet_yemek_id: Int){
-        sydao.sepettenYemekSil(sepet_yemek_id,kullanici_adi_kaya)
+    suspend fun sepettenYemekSil(sepet_yemek_id: Int) {
+        sydao.sepettenYemekSil(sepet_yemek_id, kullanici_adi_kaya)
     }
-
 
 
 }
