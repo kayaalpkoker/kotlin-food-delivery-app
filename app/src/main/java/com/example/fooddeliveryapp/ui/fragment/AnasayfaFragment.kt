@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.fooddeliveryapp.R
 import com.example.fooddeliveryapp.databinding.FragmentAnasayfaBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +23,8 @@ class AnasayfaFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentAnasayfaBinding.inflate(inflater, container, false)
 
+
+        binding.rvProducts.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
 
         return binding.root

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="cartObject"
+            type="com.example.fooddeliveryapp.data.entity.SepetYemekler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewCartItem"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageViewCartItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/textViewItemName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@{cartObject.yemek_adi}"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewCartItem"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textViewFixed1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Fiyat:"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewCartItem"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewItemName" />
+
+                <TextView
+                    android:id="@+id/textViewFixed2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Adet:"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewCartItem"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewFixed1" />
+
+                <TextView
+                    android:id="@+id/textViewItemPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text='@{String.format("₺ %s", cartObject.yemek_fiyat)}'
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewFixed1"
+                    app:layout_constraintStart_toEndOf="@+id/textViewFixed1"
+                    app:layout_constraintTop_toTopOf="@+id/textViewFixed1" />
+
+                <TextView
+                    android:id="@+id/textViewItemTotalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@{String.valueOf(cartObject.yemek_siparis_adet)}"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewFixed2"
+                    app:layout_constraintStart_toEndOf="@+id/textViewFixed2"
+                    app:layout_constraintTop_toTopOf="@+id/textViewFixed2" />
+
+                <ImageView
+                    android:id="@+id/imageViewDeleteItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/icon_delete" />
+
+                <TextView
+                    android:id="@+id/textViewItemTotalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text='@{String.format("₺ %s", cartObject.yemek_fiyat * cartObject.yemek_siparis_adet)}'
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewItemTotalAmount"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textViewItemTotalAmount" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>
