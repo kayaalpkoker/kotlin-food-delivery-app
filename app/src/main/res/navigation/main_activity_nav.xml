@@ -15,13 +15,19 @@
             app:destination="@id/urunDetayFragment" />
         <action
             android:id="@+id/switchHomepageToCart"
-            app:destination="@id/sepetFragment" />
+            app:destination="@id/sepetFragment"
+            app:popUpTo="@id/urunDetayFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/urunDetayFragment"
         android:name="com.example.fooddeliveryapp.ui.fragment.UrunDetayFragment"
         android:label="fragment_urun_detay"
-        tools:layout="@layout/fragment_urun_detay" />
+        tools:layout="@layout/fragment_urun_detay" >
+        <argument
+            android:name="product"
+            app:argType="com.example.fooddeliveryapp.data.entity.Yemekler" />
+    </fragment>
     <fragment
         android:id="@+id/sepetFragment"
         android:name="com.example.fooddeliveryapp.ui.fragment.SepetFragment"

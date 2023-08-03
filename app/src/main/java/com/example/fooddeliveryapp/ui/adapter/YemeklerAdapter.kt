@@ -50,13 +50,13 @@ class YemeklerAdapter(var mContext:Context, var yemeklerListesi:MutableLiveData<
         d.productObject = product
 
         d.cardViewProduct.setOnClickListener{
-            val transition = AnasayfaFragmentDirections.switchHomepageToProductDetail()//product = product)
+            val transition = AnasayfaFragmentDirections.switchHomepageToProductDetail(product = product)
             Navigation.switchPage(it,transition)
         }
 
 
-        val url = "http://kasimadalan.pe.hu/yemekler/resimler/${product.yemek_resim_adi}"
-        Glide.with(mContext).load(url).override(300,300).into(d.imageViewProduct)
+        val imageUrl = "http://kasimadalan.pe.hu/yemekler/resimler/${product.yemek_resim_adi}"
+        Glide.with(mContext).load(imageUrl).override(300,300).into(d.imageViewProduct)
     }
 
 }

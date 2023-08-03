@@ -25,10 +25,9 @@ class UrunDetayViewModel @Inject constructor(var syrepo: SepetYemeklerRepository
 
     fun sepeteYemekEkle(yemek_adi: String,
                         yemek_resim_adi: String,
-                        yemek_fiyat: Int,
-                        yemek_siparis_adet: Int){
+                        yemek_fiyat: Int){
         CoroutineScope(Dispatchers.Main).launch {
-            syrepo.sepeteYemekEkle(yemek_adi,yemek_resim_adi,yemek_fiyat,yemek_siparis_adet)
+            syrepo.sepeteYemekEkle(yemek_adi,yemek_resim_adi,yemek_fiyat, amount.value!!)
         }
     }
 
