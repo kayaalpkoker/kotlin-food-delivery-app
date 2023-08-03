@@ -35,6 +35,4 @@ class AnasayfaViewModel @Inject constructor(var yrepo: YemeklerRepository, var s
             syrepo.sepeteYemekEkle(yemek_adi,yemek_resim_adi,yemek_fiyat,1)
         }
     }
-
-
 }

@@ -5,50 +5,43 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.example.fooddeliveryapp.R
 import com.example.fooddeliveryapp.databinding.FragmentAnasayfaBinding
+import com.example.fooddeliveryapp.ui.adapter.YemeklerAdapter
+import com.example.fooddeliveryapp.ui.viewmodel.AnasayfaViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class AnasayfaFragment : Fragment() {
 
     private lateinit var binding: FragmentAnasayfaBinding
+    private lateinit var viewModel: AnasayfaViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding = FragmentAnasayfaBinding.inflate(inflater, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // Inflate via Data Binding
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_anasayfa, container, false)
+        binding.anasayfaFragment = this
 
-
-        binding.rvProducts.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-
+        // Adapter
+        viewModel.yemeklerListesi.observe(viewLifecycleOwner){
+            val adapter = YemeklerAdapter(requireContext(),it,viewModel)
+            binding.yemeklerAdapter = adapter
+        }
 
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupBottomNavigationView()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel: AnasayfaViewModel by viewModels()
+        viewModel = tempViewModel
     }
 
-    private fun setupBottomNavigationView() {
-        binding.bottomNav.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.anasayfaFragment -> {
-                    // Do nothing for now
-                    true
-                }
-                R.id.sepetFragment -> {
-                    findNavController().navigate(R.id.switchHomepageToCart)
-                    true
-                }
-                else -> false
-            }
-        }
+    override fun onResume() {
+        super.onResume()
+        viewModel.tumYemekleriGetir()
     }
 
 }
