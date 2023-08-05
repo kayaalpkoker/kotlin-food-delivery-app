@@ -12,14 +12,14 @@ import javax.inject.Inject
 @HiltViewModel
 class UrunDetayViewModel @Inject constructor(var syrepo: SepetYemeklerRepository) : ViewModel() {
 
-    val amount = MutableLiveData(0)
+    val amount = MutableLiveData(1)
 
     fun increaseAmount() {
-        amount.value = (amount.value ?: 0) + 1
+        amount.value = (amount.value ?: 1) + 1
     }
 
     fun decreaseAmount() {
-        if ((amount.value ?: 0) > 0)
+        if ((amount.value ?: 1) > 1)
             amount.value = amount.value!! - 1
     }
 

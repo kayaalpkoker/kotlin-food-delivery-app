@@ -116,7 +116,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="24dp"
-            android:text="0"
+            android:text="1"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/fabIncrease"
@@ -130,10 +130,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="32dp"
-            android:backgroundTint="@color/mainPurple"
-            android:text="Sepete Ekle"
-            android:textColor="@color/mainYellow"
+            android:backgroundTint="@color/mainYellow"
+            android:text="Add to Cart"
+            android:textColor="@color/mainPurple"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

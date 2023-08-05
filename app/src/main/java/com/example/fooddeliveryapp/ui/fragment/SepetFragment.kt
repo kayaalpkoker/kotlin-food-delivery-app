@@ -28,6 +28,10 @@ class SepetFragment : Fragment() {
         viewModel.sepetYemeklerListesi.observe(viewLifecycleOwner){
             val adapter = SepetYemeklerAdapter(requireContext(),it,viewModel)
             binding.sepetYemeklerAdapter = adapter
+
+            // Calculate total price and update TextView
+            val totalPrice = viewModel.calculateTotalPrice()
+            binding.textViewCartSum.text = "₺ $totalPrice"
         }
 
         return binding.root

@@ -5,9 +5,9 @@
     <item
         android:id="@+id/anasayfaFragment"
         android:icon="@drawable/icon_home"
-        android:title="Anasayfa" />
+        android:title="Home" />
     <item
         android:id="@+id/sepetFragment"
         android:icon="@drawable/icon_cart"
-        android:title="Sepet" />
+        android:title="Cart" />
 </menu>

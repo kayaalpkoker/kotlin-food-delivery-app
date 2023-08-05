@@ -27,24 +27,36 @@ class UrunDetayFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_urun_detay, container, false)
         binding.urunDetayFragment = this
 
-        // amount işlemleri?
-
         val bundle:UrunDetayFragmentArgs by navArgs()
         binding.productObject = bundle.product
+        val product = bundle.product
 
-        val imageUrl = "http://kasimadalan.pe.hu/yemekler/resimler/${bundle.product.yemek_resim_adi}"
+        val imageUrl = "http://kasimadalan.pe.hu/yemekler/resimler/${product.yemek_resim_adi}"
         Glide.with(binding.imageViewProductDetail).load(imageUrl).into(binding.imageViewProductDetail)
 
         binding.buttonAddToCart.setOnClickListener {
-            viewModel.sepeteYemekEkle(bundle.product.yemek_adi, bundle.product.yemek_resim_adi, bundle.product.yemek_fiyat)
+            viewModel.sepeteYemekEkle(product.yemek_adi, product.yemek_resim_adi, product.yemek_fiyat)
 
             Navigation.findNavController(it).popBackStack()
-            Snackbar.make(it, "Added to cart!", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(it, "${product.yemek_adi} added to cart!", Snackbar.LENGTH_SHORT).show()
         }
 
-        binding.textViewItemAmount.text = "0"
-        viewModel.amount.observe(viewLifecycleOwner) {
-            binding.textViewItemAmount.text = it.toString()
+        binding.textViewItemAmount.text = "1"
+
+        viewModel.amount.observe(viewLifecycleOwner) {value ->
+            binding.textViewItemAmount.text = value.toString()
+
+            val unitPrice = bundle.product.yemek_fiyat.toString().toDoubleOrNull() ?: 0.0
+            val totalPrice = unitPrice * value
+            binding.textViewAmountPrice.text = String.format("₺ %.2f", totalPrice)
+
+            if (value <= 1) {
+                binding.fabDecrease.alpha = 0.1f
+                binding.fabDecrease.isClickable = false
+            } else {
+                binding.fabDecrease.alpha = 1.0f
+                binding.fabDecrease.isClickable = true
+            }
         }
 
         binding.fabIncrease.setOnClickListener {
