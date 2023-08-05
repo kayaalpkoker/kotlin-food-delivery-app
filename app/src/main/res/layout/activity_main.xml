@@ -22,7 +22,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="72dp"
         app:itemIconTint="@color/mainPurple"
         app:itemTextColor="@color/mainPurple"
         app:layout_constraintBottom_toBottomOf="parent"

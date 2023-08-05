@@ -4,6 +4,7 @@ import com.example.fooddeliveryapp.data.entity.SepetYemekler
 import com.example.fooddeliveryapp.retrofit.SepetYemeklerDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.io.EOFException
 
 class SepetYemeklerDataSource(var sydao: SepetYemeklerDao) {
 
@@ -11,7 +12,11 @@ class SepetYemeklerDataSource(var sydao: SepetYemeklerDao) {
 
     suspend fun sepettekiYemekleriGetir(): List<SepetYemekler> =
         withContext(Dispatchers.IO) {
-            return@withContext sydao.sepettekiYemekleriGetir(kullanici_adi_kaya).sepet_yemekler
+            try {
+                return@withContext sydao.sepettekiYemekleriGetir(kullanici_adi_kaya).sepet_yemekler
+            } catch (e: EOFException) {
+                return@withContext listOf<SepetYemekler>()
+            }
         }
 
     suspend fun sepeteYemekEkle(
@@ -26,6 +31,5 @@ class SepetYemeklerDataSource(var sydao: SepetYemeklerDao) {
     suspend fun sepettenYemekSil(sepet_yemek_id: Int) {
         sydao.sepettenYemekSil(sepet_yemek_id, kullanici_adi_kaya)
     }
-
 
 }

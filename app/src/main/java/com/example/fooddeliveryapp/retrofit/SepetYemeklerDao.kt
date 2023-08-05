@@ -8,9 +8,6 @@ import retrofit2.http.POST
 
 interface SepetYemeklerDao {
 
-    // GET images not used to prevent transaction overuse
-    // http://kasimadalan.pe.hu/yemekler/resimler/{yemek_resim_adi}
-
     @POST("/yemekler/sepettekiYemekleriGetir.php")
     @FormUrlEncoded
     suspend fun sepettekiYemekleriGetir(@Field("kullanici_adi") kullanici_adi:String) : SepetYemeklerCevap

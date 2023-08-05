@@ -14,23 +14,8 @@ import com.example.fooddeliveryapp.ui.fragment.AnasayfaFragmentDirections
 import com.example.fooddeliveryapp.ui.viewmodel.AnasayfaViewModel
 import com.example.fooddeliveryapp.utils.switchPage
 
-
-// Main
 class YemeklerAdapter(var mContext:Context, var yemeklerListesi:List<Yemekler>, var viewModel:AnasayfaViewModel)
     : RecyclerView.Adapter<YemeklerAdapter.CardDesignProductHolder>() {
-
-/*
-// Alternative
-class YemeklerAdapter(var mContext:Context, var yemeklerListesi:MutableLiveData<List<Yemekler>>, var viewModel:AnasayfaViewModel, var lifecycleOwner: LifecycleOwner)
-    : RecyclerView.Adapter<YemeklerAdapter.CardDesignProductHolder>() {
-
-    // If alternative is used
-    init {
-        yemeklerListesi.observe(lifecycleOwner) {
-            notifyDataSetChanged()
-        }
-    }
- */
 
     inner class CardDesignProductHolder(var design:CardDesignProductBinding) : RecyclerView.ViewHolder(design.root)
 
@@ -40,11 +25,11 @@ class YemeklerAdapter(var mContext:Context, var yemeklerListesi:MutableLiveData<
     }
 
     override fun getItemCount(): Int {
-        return yemeklerListesi.size //.value?.size ?: 0
+        return yemeklerListesi.size
     }
 
     override fun onBindViewHolder(holder: CardDesignProductHolder, position: Int) {
-        val product = yemeklerListesi.get(position) //.value!![position]
+        val product = yemeklerListesi.get(position)
         val d = holder.design
 
         d.productObject = product

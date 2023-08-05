@@ -23,8 +23,7 @@ class UrunDetayFragment : Fragment() {
     private lateinit var viewModel: UrunDetayViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        // Inflate via Data Binding
+        // Inflate the layout via data binding
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_urun_detay, container, false)
         binding.urunDetayFragment = this
 

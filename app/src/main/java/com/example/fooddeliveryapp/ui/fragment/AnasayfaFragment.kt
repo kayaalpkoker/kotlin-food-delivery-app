@@ -20,7 +20,7 @@ class AnasayfaFragment : Fragment() {
     private lateinit var viewModel: AnasayfaViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate via Data Binding
+        // Inflate the layout via data binding
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_anasayfa, container, false)
         binding.anasayfaFragment = this
 
@@ -40,11 +40,11 @@ class AnasayfaFragment : Fragment() {
     }
 
     /*
+   // Causes reloading problem after initial load()
     override fun onResume() {
         super.onResume()
         viewModel.tumYemekleriGetir()
     }
-
      */
 
 }

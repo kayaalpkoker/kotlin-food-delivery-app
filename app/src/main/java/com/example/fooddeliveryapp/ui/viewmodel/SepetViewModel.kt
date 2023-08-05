@@ -21,7 +21,9 @@ class SepetViewModel @Inject constructor(var syrepo: SepetYemeklerRepository) : 
 
     fun sepettekiYemekleriGetir() {
         CoroutineScope(Dispatchers.Main).launch {
-            sepetYemeklerListesi.value = syrepo.sepettekiYemekleriGetir()
+            //sepetYemeklerListesi.value = syrepo.sepettekiYemekleriGetir()
+            val yemekler = syrepo.sepettekiYemekleriGetir()
+            sepetYemeklerListesi.value = yemekler // Even if yemekler is empty, it will just clear the RecyclerView
         }
     }
 
