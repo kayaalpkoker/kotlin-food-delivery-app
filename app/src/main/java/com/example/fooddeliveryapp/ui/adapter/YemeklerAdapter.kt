@@ -41,7 +41,7 @@ class YemeklerAdapter(var mContext:Context, var yemeklerListesi:List<Yemekler>, 
         }
 
         d.fabAddToCart.setOnClickListener {
-            viewModel.sepeteYemekEkle(product.yemek_adi, product.yemek_resim_adi, product.yemek_fiyat, 1)
+            viewModel.sepeteYemekEkle(product.yemek_adi, product.yemek_resim_adi, product.yemek_fiyat)
             Snackbar.make(it, "${product.yemek_adi} added to cart!", Snackbar.LENGTH_SHORT).show()
         }
 

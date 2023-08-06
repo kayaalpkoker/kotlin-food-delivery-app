@@ -39,12 +39,4 @@ class AnasayfaFragment : Fragment() {
         viewModel = tempViewModel
     }
 
-    /*
-   // Causes reloading problem after initial load()
-    override fun onResume() {
-        super.onResume()
-        viewModel.tumYemekleriGetir()
-    }
-     */
-
 }

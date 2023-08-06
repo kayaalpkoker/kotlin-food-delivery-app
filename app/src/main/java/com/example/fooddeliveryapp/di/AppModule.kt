@@ -17,7 +17,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class AppModule {
 
-    // Yemekler
     @Provides
     @Singleton
     fun provideYemeklerRepository(yds: YemeklerDataSource) : YemeklerRepository {
