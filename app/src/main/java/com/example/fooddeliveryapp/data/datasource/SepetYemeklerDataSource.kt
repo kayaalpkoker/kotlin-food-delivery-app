@@ -19,12 +19,10 @@ class SepetYemeklerDataSource(var sydao: SepetYemeklerDao) {
             }
         }
 
-    suspend fun sepeteYemekEkle(
-        yemek_adi: String,
-        yemek_resim_adi: String,
-        yemek_fiyat: Int,
-        yemek_siparis_adet: Int
-    ) {
+    suspend fun sepeteYemekEkle(yemek_adi: String,
+                                yemek_resim_adi: String,
+                                yemek_fiyat: Int,
+                                yemek_siparis_adet: Int) {
         sydao.sepeteYemekEkle(yemek_adi, yemek_resim_adi, yemek_fiyat, yemek_siparis_adet, kullanici_adi_kaya)
     }
 

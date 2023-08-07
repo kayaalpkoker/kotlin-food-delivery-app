@@ -12,5 +12,4 @@ class YemeklerDataSource(var ydao: YemeklerDao) {
             return@withContext ydao.tumYemekleriGetir().yemekler
         }
 
-
 }

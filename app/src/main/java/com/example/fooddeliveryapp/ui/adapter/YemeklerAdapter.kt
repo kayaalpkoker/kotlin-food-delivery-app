@@ -13,6 +13,7 @@ import com.example.fooddeliveryapp.databinding.CardDesignProductBinding
 import com.example.fooddeliveryapp.ui.fragment.AnasayfaFragmentDirections
 import com.example.fooddeliveryapp.ui.viewmodel.AnasayfaViewModel
 import com.example.fooddeliveryapp.utils.switchPage
+import com.google.android.material.snackbar.Snackbar
 
 class YemeklerAdapter(var mContext:Context, var yemeklerListesi:List<Yemekler>, var viewModel:AnasayfaViewModel)
     : RecyclerView.Adapter<YemeklerAdapter.CardDesignProductHolder>() {
@@ -39,6 +40,10 @@ class YemeklerAdapter(var mContext:Context, var yemeklerListesi:List<Yemekler>, 
             Navigation.switchPage(it,transition)
         }
 
+        d.fabAddToCart.setOnClickListener {
+            viewModel.sepeteYemekEkle(product.yemek_adi, product.yemek_resim_adi, product.yemek_fiyat)
+            Snackbar.make(it, "${product.yemek_adi} added to cart!", Snackbar.LENGTH_SHORT).show()
+        }
 
         val imageUrl = "http://kasimadalan.pe.hu/yemekler/resimler/${product.yemek_resim_adi}"
         Glide.with(mContext).load(imageUrl).override(300,300).into(d.imageViewProduct)

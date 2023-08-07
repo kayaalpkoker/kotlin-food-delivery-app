@@ -8,6 +8,4 @@ interface YemeklerDao {
     @GET("/yemekler/tumYemekleriGetir.php")
     suspend fun  tumYemekleriGetir() : YemeklerCevap
 
-
-
 }

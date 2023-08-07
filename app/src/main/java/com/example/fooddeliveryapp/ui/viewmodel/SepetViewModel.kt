@@ -21,9 +21,8 @@ class SepetViewModel @Inject constructor(var syrepo: SepetYemeklerRepository) : 
 
     fun sepettekiYemekleriGetir() {
         CoroutineScope(Dispatchers.Main).launch {
-            //sepetYemeklerListesi.value = syrepo.sepettekiYemekleriGetir()
             val yemekler = syrepo.sepettekiYemekleriGetir()
-            sepetYemeklerListesi.value = yemekler // Even if yemekler is empty, it will just clear the RecyclerView
+            sepetYemeklerListesi.value = yemekler
         }
     }
 
@@ -32,6 +31,10 @@ class SepetViewModel @Inject constructor(var syrepo: SepetYemeklerRepository) : 
             syrepo.sepettenYemekSil(sepet_yemek_id)
             sepettekiYemekleriGetir()
         }
+    }
+
+    fun calculateTotalPrice(): Int {
+        return sepetYemeklerListesi.value?.sumOf { it.yemek_fiyat * it.yemek_siparis_adet } ?: 0
     }
 
 }

@@ -40,21 +40,22 @@
                     android:id="@+id/textViewItemName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:text="@{cartObject.yemek_adi}"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/imageViewCartItem"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@+id/imageViewCartItem" />
 
                 <TextView
                     android:id="@+id/textViewFixed1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
-                    android:text="Fiyat:"
+                    android:text="Price:"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/imageViewCartItem"
                     app:layout_constraintTop_toBottomOf="@+id/textViewItemName" />
 
@@ -62,9 +63,10 @@
                     android:id="@+id/textViewFixed2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Adet:"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Quantity:"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/imageViewCartItem"
                     app:layout_constraintTop_toBottomOf="@+id/textViewFixed1" />
 
@@ -72,19 +74,20 @@
                     android:id="@+id/textViewItemPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:text='@{String.format("₺ %s", cartObject.yemek_fiyat)}'
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewFixed1"
-                    app:layout_constraintStart_toEndOf="@+id/textViewFixed1"
+                    app:layout_constraintStart_toStartOf="@+id/textViewItemQuantity"
                     app:layout_constraintTop_toTopOf="@+id/textViewFixed1" />
 
                 <TextView
-                    android:id="@+id/textViewItemTotalAmount"
+                    android:id="@+id/textViewItemQuantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="@{String.valueOf(cartObject.yemek_siparis_adet)}"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewFixed2"
                     app:layout_constraintStart_toEndOf="@+id/textViewFixed2"
                     app:layout_constraintTop_toTopOf="@+id/textViewFixed2" />
@@ -103,13 +106,14 @@
                     android:id="@+id/textViewItemTotalPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="24dp"
                     android:text='@{String.format("₺ %s", cartObject.yemek_fiyat * cartObject.yemek_siparis_adet)}'
-                    android:textSize="20sp"
+                    android:textColor="@color/mainPurple"
+                    android:textSize="24sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/textViewItemTotalAmount"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewItemQuantity"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textViewItemTotalAmount" />
+                    app:layout_constraintTop_toTopOf="@+id/textViewItemQuantity" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
