@@ -13,15 +13,15 @@ import javax.inject.Inject
 @HiltViewModel
 class UrunDetayViewModel @Inject constructor(var syrepo: SepetYemeklerRepository) : ViewModel() {
 
-    val amount = MutableLiveData(1)
+    val quantity = MutableLiveData(1)
 
-    fun increaseAmount() {
-        amount.value = (amount.value ?: 1) + 1
+    fun increaseQuantity() {
+        quantity.value = (quantity.value ?: 1) + 1
     }
 
-    fun decreaseAmount() {
-        if ((amount.value ?: 1) > 1)
-            amount.value = amount.value!! - 1
+    fun decreaseQuantity() {
+        if ((quantity.value ?: 1) > 1)
+            quantity.value = quantity.value!! - 1
     }
 
     suspend fun checkProductInCart(yemek_adi: String): SepetYemekler? {
@@ -37,10 +37,10 @@ class UrunDetayViewModel @Inject constructor(var syrepo: SepetYemeklerRepository
             if (existingProduct != null) {
                 // If product already exists in the cart, delete it and then add with updated quantity
                 syrepo.sepettenYemekSil(existingProduct.sepet_yemek_id)
-                syrepo.sepeteYemekEkle(yemek_adi, yemek_resim_adi, yemek_fiyat, existingProduct.yemek_siparis_adet + amount.value!!)
+                syrepo.sepeteYemekEkle(yemek_adi, yemek_resim_adi, yemek_fiyat, existingProduct.yemek_siparis_adet + quantity.value!!)
             } else {
                 // If product doesn't exist in the cart, add it with user-chosen quantity
-                syrepo.sepeteYemekEkle(yemek_adi, yemek_resim_adi, yemek_fiyat, amount.value!!)
+                syrepo.sepeteYemekEkle(yemek_adi, yemek_resim_adi, yemek_fiyat, quantity.value!!)
             }
         }
     }

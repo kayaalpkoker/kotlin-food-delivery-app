@@ -41,14 +41,14 @@ class UrunDetayFragment : Fragment() {
             Snackbar.make(it, "${product.yemek_adi} added to cart!", Snackbar.LENGTH_SHORT).show()
         }
 
-        binding.textViewItemAmount.text = "1"
+        binding.textViewQuantity.text = "1"
 
-        viewModel.amount.observe(viewLifecycleOwner) {value ->
-            binding.textViewItemAmount.text = value.toString()
+        viewModel.quantity.observe(viewLifecycleOwner) { value ->
+            binding.textViewQuantity.text = value.toString()
 
             val unitPrice = bundle.product.yemek_fiyat.toString().toDoubleOrNull() ?: 0.0
             val totalPrice = unitPrice * value
-            binding.textViewAmountPrice.text = String.format("₺ %.2f", totalPrice)
+            binding.textViewQuantityPrice.text = String.format("₺ %.2f", totalPrice)
 
             if (value <= 1) {
                 binding.fabDecrease.alpha = 0.1f
@@ -60,11 +60,11 @@ class UrunDetayFragment : Fragment() {
         }
 
         binding.fabIncrease.setOnClickListener {
-            viewModel.increaseAmount()
+            viewModel.increaseQuantity()
         }
 
         binding.fabDecrease.setOnClickListener {
-            viewModel.decreaseAmount()
+            viewModel.decreaseQuantity()
         }
 
         binding.toolbarLogo.setNavigationIcon(R.drawable.icon_arrow_back)
