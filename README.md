@@ -8,6 +8,8 @@ This project represents an increment of a Food Delivery application written in K
 - Add meals to the cart
 - View cart and checkout
 
+<img src="https://github.com/kayaalpkoker/kotlin-food-delivery-app/blob/main/demo.gif" width="300">
+
 ## Libraries and Technologies Used
 
 - **AndroidX Libraries**: Used for backwards compatibility and additional functionalities
